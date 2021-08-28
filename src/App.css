@@ -1,3 +1,7 @@
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .login__page {
   display: grid;
   place-items: center;
@@ -15,4 +19,133 @@
   font-weight: 900;
   text-decoration: none;
   color: #fff;
+}
+
+.player__container {
+  display: flex;
+}
+
+.sidebar__container {
+  flex: 0.2;
+  height: 100vh;
+  min-width: 230px;
+  color: #fff;
+  padding: 10px;
+  background-color: #040404;
+}
+
+.sidebar__container > hr {
+  width: 90%;
+  margin: 10px auto;
+  border: 1px solid #282828;
+}
+
+.sidebar__logo {
+  height: 70px;
+  padding: 04px;
+  margin-right: auto;
+}
+
+.sidebar__options {
+  padding: 08px 0px;
+  display: flex;
+  color: gray;
+  transition: 300ms color ease-in;
+}
+
+.sidebar__options:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+.sidebar__options > p {
+  /* margin-top: 10px; */
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.sidebar__option__icon {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.sidebar__title {
+}
+
+.main__container {
+  flex: 0.8;
+  color: #fff;
+  padding: 30px;
+  height: 100vh;
+  background: linear-gradient(rgb(91, 87, 115), rgba(0, 0, 0, 1));
+}
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  height: 69px;
+  width: 100%;
+  background-color: #282828;
+  padding: 20px;
+}
+
+.footer__container {
+  width: 96%;
+  display: flex;
+  color: #eee;
+  justify-content: space-between;
+}
+
+.footer__left {
+  display: flex;
+  /* flex: 0.3; */
+}
+
+.footer__album_log {
+  width: 40px;
+  height: 40px;
+  margin: 0 20px;
+  object-fit: center;
+}
+
+.footer__song_info {
+  line-height: 10px;
+}
+
+.footer__song_info > h6 {
+  color: #fff;
+}
+
+.footer__song_info > p {
+  font-size: 12px;
+  color: #e3ebf8;
+}
+
+.footer__center {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  flex: 0.4;
+}
+
+.footer__center > * {
+  cursor: pointer;
+}
+
+.footer__icon:hover,
+.footer__green:hover {
+  transition: transform 0.2s ease-in-out;
+  transform: scale(1.2) !important;
+}
+
+.footer__green {
+  color: #1db955;
+}
+
+.footer__right {
+}
+
+.footer__right * .MuiSlider-root {
+  color: #1db955;
 }

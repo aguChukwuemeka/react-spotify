@@ -4,34 +4,59 @@ import Login from "./components/login";
 import { getTokenFromUrlResponse } from "./api/spotify";
 import Player from "./components/player";
 import SpotifyWebApi from "spotify-web-api-js";
+import { useStateValue } from "./contextApi/StateProvider";
 
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [token, setToken] = useState(null);
+  // const [token, setToken] = useState(null);
+  const [{ user, token }, dispatch] = useStateValue();
 
   useEffect(() => {
     const hash = getTokenFromUrlResponse();
     window.location.hash = "";
     const _token = hash.access_token;
+
     if (_token) {
-      setToken(_token);
+      // setToken(_token);
+      dispatch({
+        type: "SET_TOKEN",
+        token: _token,
+      });
+
       spotify.setAccessToken(_token); //Approval: this token help to talk back&front b/w spotify and reactApp
+
       spotify.getMe().then((user) => {
-        console.log("👨", user);
+        // console.log("👨", user);
+        dispatch({
+          type: "SET_USER",
+          user,
+        });
+      });
+
+      spotify.getUserPlaylists().then((playlists) => {
+        console.log('👨‍🦯',playlists);
+        dispatch({
+          type: "SET_PLAYLIST",
+          playlists,
+        });
       });
     }
 
-    console.log("I HAVE A TOKEN 👉", token);
-  }, [token]);
+    // console.log("I HAVE A TOKEN 👉", token);
+  }, [token, dispatch]);
+  console.log("👨", user);
+  console.log("👽", token);
 
   return (
     <div className="App">
-      <header className="App-header">{token ? <Player /> : <Login />}</header>
+      <header className="App-header">
+        {token ? <Player spotify={spotify} /> : <Login />}
+      </header>
     </div>
   );
 }
 
 export default App;
 
-// 462dc5eccb0b4ffd8b7cf0cad5d75adc
+// yarn add spotify-web-api-js  --dependance
