@@ -48,7 +48,7 @@ export default function Footer() {
         <div className="footer__right">
           <Grid container spacing={2} className={classes.root}>
             <Grid item>
-              <PlaylistPlayIcon />
+              <PlaylistPlayIcon className='footer__playlistd__icon' />
             </Grid>
             <Grid item>
               <VolumeDown />

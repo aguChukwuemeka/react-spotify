@@ -35,18 +35,26 @@ function App() {
       });
 
       spotify.getUserPlaylists().then((playlists) => {
-        console.log('👨‍🦯',playlists);
+        // console.log('👨‍🦯',playlists);
         dispatch({
           type: "SET_PLAYLIST",
           playlists,
+        });
+      });
+
+      spotify.getPlaylist("4GpBODwgLjOwL6JcBunQcr").then((response) => {
+        console.log("👧", response);
+        dispatch({
+          type: "SET_DISCOVERY_WEEKLY",
+          discover_weekly: response,
         });
       });
     }
 
     // console.log("I HAVE A TOKEN 👉", token);
   }, [token, dispatch]);
-  console.log("👨", user);
-  console.log("👽", token);
+  // console.log("👨", user);
+  // console.log("👽", token);
 
   return (
     <div className="App">
